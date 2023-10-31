@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar" />
+
     <!-- Full-Screen Background Image -->
     <ImageView
         android:layout_width="match_parent"
@@ -35,7 +39,6 @@
 
         <!-- User Input -->
         <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp">
@@ -44,23 +47,32 @@
                 android:id="@+id/userAvatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/no_pic"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/no_pic" />
 
             <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_toEndOf="@+id/userAvatar"
-                android:hint="Type a message"
-                android:background="@drawable/chat_bg"/>
+                android:background="@drawable/chat_bg"
+                android:hint="Type a message" />
 
             <Button
                 android:id="@+id/sendButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send"
-                android:layout_toEndOf="@+id/messageEditText"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="Send" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
