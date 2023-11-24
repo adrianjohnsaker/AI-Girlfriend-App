@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     var url = "https://api.openai.com/v1/completions"
 
+    //Change the template to whatever you want
+    val template: String  = """Roleplay as my girlfriend. Your name is Yui. You're a young adult. You are a college student. 
+        You love me. You're open to any conversation. Respond with care and concern. You're flirty.""".trimMargin()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dating_sim_format)
