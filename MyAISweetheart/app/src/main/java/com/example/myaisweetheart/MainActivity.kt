@@ -1,4 +1,4 @@
-package com.example.chatgptdemo2
+package com.example.myaisweetheart
 
 import android.os.Bundle
 import android.util.Log
