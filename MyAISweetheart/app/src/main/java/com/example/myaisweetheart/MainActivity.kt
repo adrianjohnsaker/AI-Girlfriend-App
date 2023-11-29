@@ -56,10 +56,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    var responseCounter: Int = 0;
+
     private fun getResponse(query: String) {
         // setting text on for question on below line.
         questionTV.text = query
         queryEdt.setText("")
+
+        //AI response placeholder
+        responseTV.text = "response " + responseCounter;
+        responseCounter++;
+
+        /* <- remove comment start here for AI code
+
         // creating a queue for request queue.
         val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
         // creating a json object on below line.
@@ -92,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer (>>>API Key here, YOU MUST ASK BRANDON FOR THE KEY BEFORE USE!!!<<<)"
+                        "Bearer ask-GUSAiWuOTQUt8BrrTLKQT3BlbkFJ8wFBwyGVFc2zGNEx5Lkc"
                     return params;
                 }
             }
@@ -113,5 +122,7 @@ class MainActivity : AppCompatActivity() {
         })
         // on below line adding our request to queue.
         queue.add(postRequest)
+
+        remove comment end here for AI code -> */
     }
 }
