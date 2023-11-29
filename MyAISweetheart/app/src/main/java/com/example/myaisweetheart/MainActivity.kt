@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer ask-GUSAiWuOTQUt8BrrTLKQT3BlbkFJ8wFBwyGVFc2zGNEx5Lkc"
+                        "Bearer INSERT API KEY HERE (ASK BRANDON FOR API KEY BEFORE USE!!!)"
                     return params;
                 }
             }
