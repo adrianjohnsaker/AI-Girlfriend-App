@@ -1,32 +1,27 @@
 package com.example.myaisweetheart
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.RetryPolicy
-import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
-import org.json.JSONObject
+
 
 class MainActivity : AppCompatActivity() {
 
     // creating variables on below line.
-    lateinit var responseTV: TextView
-    lateinit var questionTV: TextView
-    lateinit var queryEdt: TextInputEditText
+    private lateinit var responseTV: TextView
+    private lateinit var questionTV: TextView
+    private lateinit var queryEdt: TextInputEditText
 
-    var url = "https://api.openai.com/v1/completions"
 
-    //Change the AI template to whatever you want
-    val template: String  = """Roleplay as my girlfriend. Your name is Yui. You're 21 years old. You are a college student. 
+    val template: String  = """Roleplay as my girlfriend. Your name is Yui. You're a young adult. You are a college student. 
         You love me. You're open to any conversation. Respond with care and concern. You're flirty.""".trimMargin()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +32,16 @@ class MainActivity : AppCompatActivity() {
         responseTV = findViewById(R.id.idTVResponse)
         questionTV = findViewById(R.id.idTVQuestion)
         queryEdt = findViewById(R.id.idEdtQuery)
-
         // adding editor action listener for edit text on below line.
+
+        getResponse(template)
+
         queryEdt.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 // setting response tv on below line.
                 responseTV.text = "..."
                 // validating text
-                if (queryEdt.text.toString().length > 0) {
+                if (queryEdt.text.toString().isNotEmpty()) {
                     // calling get response to get the response.
                     getResponse(queryEdt.text.toString())
                 } else {
@@ -54,75 +51,32 @@ class MainActivity : AppCompatActivity() {
             }
             false
         })
+
+        val settingsBtn: Button = findViewById(R.id.settings_btn)
+        settingsBtn.setOnClickListener {
+            val settingsIntent = Intent(this, SettingsActivity::class.java)
+            startActivity(settingsIntent)
+        }
     }
 
-    var responseCounter: Int = 0;
+    private var responseCounter = 0
 
     private fun getResponse(query: String) {
-        // setting text on for question on below line.
-        questionTV.text = query
+
+        if (query != template)
+            questionTV.text = query
         queryEdt.setText("")
 
         //AI response placeholder
-        responseTV.text = "response " + responseCounter;
-        responseCounter++;
+        responseTV.text = "Response$responseCounter"
+        responseCounter++
+    }
 
-        /* <- remove comment start here for AI code
-
-        // creating a queue for request queue.
-        val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        // creating a json object on below line.
-        val jsonObject: JSONObject? = JSONObject()
-        // adding params to json object.
-        jsonObject?.put("model", "text-davinci-003")
-        jsonObject?.put("prompt", query)
-        jsonObject?.put("temperature", 1)
-        jsonObject?.put("max_tokens", 500)
-        jsonObject?.put("top_p", 1)
-        jsonObject?.put("frequency_penalty", 0.0)
-        jsonObject?.put("presence_penalty", 0.0)
-
-        // on below line making json object request.
-        val postRequest: JsonObjectRequest =
-            // on below line making json object request.
-            object : JsonObjectRequest(Method.POST, url, jsonObject,
-                Response.Listener { response ->
-                    // on below line getting response message and setting it to text view.
-                    val responseMsg: String =
-                        response.getJSONArray("choices").getJSONObject(0).getString("text")
-                    responseTV.text = responseMsg
-                },
-                // adding on error listener
-                Response.ErrorListener { error ->
-                    Log.e("TAGAPI", "Error is : " + error.message + "\n" + error)
-                }) {
-                override fun getHeaders(): kotlin.collections.MutableMap<kotlin.String, kotlin.String> {
-                    val params: MutableMap<String, String> = HashMap()
-                    // adding headers on below line.
-                    params["Content-Type"] = "application/json"
-                    params["Authorization"] =
-                        "Bearer INSERT API KEY HERE (ASK BRANDON FOR API KEY BEFORE USE!!!)"
-                    return params;
-                }
-            }
-
-        // on below line adding retry policy for our request.
-        postRequest.setRetryPolicy(object : RetryPolicy {
-            override fun getCurrentTimeout(): Int {
-                return 50000
-            }
-
-            override fun getCurrentRetryCount(): Int {
-                return 50000
-            }
-
-            @Throws(VolleyError::class)
-            override fun retry(error: VolleyError) {
-            }
-        })
-        // on below line adding our request to queue.
-        queue.add(postRequest)
-
-        remove comment end here for AI code -> */
+    override fun onPause() {
+        super.onPause()
+        val prefs = getSharedPreferences("X", MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putString("lastActivity", javaClass.name)
+        editor.apply()
     }
 }
