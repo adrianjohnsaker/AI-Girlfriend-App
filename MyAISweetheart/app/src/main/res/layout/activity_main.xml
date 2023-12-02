@@ -31,9 +31,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- text view for displaying question-->
-
-            <!-- text view for displaying response-->
             <TextView
                 android:id="@+id/idTVQuestion"
                 android:layout_width="match_parent"
@@ -85,4 +82,12 @@
             android:textColorHint="@color/white"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/settings_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:text="Settings" />
 </RelativeLayout>
