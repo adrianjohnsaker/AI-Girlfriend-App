@@ -12,6 +12,9 @@ class SettingsActivity : AppCompatActivity() {
     // Initialize variable
     lateinit var styleSwitch: Switch
     lateinit var backBtn: Button
+    lateinit var clearBtn: Button
+
+    val dbHelper = DatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
 
         styleSwitch = findViewById(R.id.message_style_switch)
         backBtn = findViewById(R.id.back_btn)
+        clearBtn = findViewById(R.id.clear_btn)
 
         val sharedPreferences = getSharedPreferences("save", MODE_PRIVATE)
         styleSwitch.setChecked(sharedPreferences.getBoolean("value", true))
@@ -39,6 +43,9 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
 
+        clearBtn.setOnClickListener(){
+            dbHelper.deleteData()
+        }
 
         backBtn.setOnClickListener {
             var backIntent = Intent(this, MainActivity::class.java)
