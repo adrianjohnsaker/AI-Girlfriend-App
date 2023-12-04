@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
+    <!-- text field for asking question-->
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
@@ -13,17 +15,17 @@
         android:scaleType="centerCrop"
         android:src="@drawable/yuibg" />
 
-    <!-- text field for asking question-->
-
     <ScrollView
         android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/idTILQuery"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="457dp"
+        android:layout_marginTop="499dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="-145dp"
+        android:layout_marginBottom="-107dp"
         android:padding="5dp">
 
         <LinearLayout
@@ -34,10 +36,14 @@
             <TextView
                 android:id="@+id/idTVQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="32dp"
                 android:layout_marginTop="30dp"
-                android:background="#A9737070"
-                android:padding="4dp"
+                android:background="@drawable/boxcake"
+                android:fontFamily="@font/Quicksand_Medium"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:text="Question"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
@@ -46,23 +52,33 @@
             <TextView
                 android:id="@+id/idTVResponse"
                 android:layout_width="match_parent"
-                android:layout_height="142dp"
+                android:layout_height="105dp"
                 android:layout_marginTop="5dp"
-                android:background="#94000000"
-                android:padding="4dp"
+                android:background="@drawable/cakebox"
+                android:fontFamily="@font/Quicksand_Medium"
+                android:paddingLeft="20dp"
+                android:paddingTop="18dp"
+                android:paddingRight="30dp"
+                android:paddingButtom="18dp"
                 android:text="Response"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="10sp" />
         </LinearLayout>
 
     </ScrollView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idTILQuery"
-        android:layout_width="match_parent"
+        android:layout_width="394dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/Quicksand_Medium"
         android:hint="Enter your query"
         android:padding="5dp"
         android:textColorHint="@color/white"
@@ -70,9 +86,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtQuery"
-            android:layout_width="387dp"
-            android:layout_height="match_parent"
-            android:background="#A9737070"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/boxcake"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
             android:drawableTint="@color/white"
             android:ems="10"
             android:imeOptions="actionSend"
@@ -80,14 +100,24 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:textSize="10sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/settings_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="0dp"
-        android:text="Settings" />
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+
+        android:onClick="openSettings"
+        android:scaleType="fitCenter"
+        android:src="@drawable/gearSettings"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
 </RelativeLayout>
