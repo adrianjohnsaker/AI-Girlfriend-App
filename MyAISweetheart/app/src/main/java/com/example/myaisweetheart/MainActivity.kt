@@ -38,6 +38,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        //button click leads to notification page
+        val nextButton: Button = findViewById(R.id.notif_button)
+        nextButton.setOnClickListener {
+            // Start ContentActivity when next_button is clicked
+            val intent = Intent(this@MainActivity, NotifActivity::class.java)
+            startActivity(intent)
+        }
+
+        
         // initializing variables on below line.
         responseTV = findViewById(R.id.idTVResponse)
         questionTV = findViewById(R.id.idTVQuestion)
