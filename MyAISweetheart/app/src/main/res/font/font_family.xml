@@ -3,9 +3,17 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/Quicksand_Medium" />
+        android:font="@font/qsmed" />
     <font
-        android:fontStyle="bold"
+        android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/Quicksand_Bold" />
+        android:font="@font/qsbold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/qssemibold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/qsreg" />
 </font-family>

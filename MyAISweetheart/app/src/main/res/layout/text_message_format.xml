@@ -22,12 +22,21 @@
         tools:context=".MainActivity">
 
 
-        <Button
+        <ImageButton
             android:id="@+id/settings_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
-            android:text="Settings" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:onClick="openSettings"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gearSettings"
+            android:visibility="visible"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -49,11 +58,13 @@
                 android:layout_weight="1"
                 android:hint="Enter Message" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Send" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sendButton"
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
 
