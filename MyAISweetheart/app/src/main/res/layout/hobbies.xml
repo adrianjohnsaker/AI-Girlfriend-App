@@ -28,21 +28,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Traveling" />
+            android:text="Traveling"
+            android:textOff="Traveling"
+            android:textOn="Traveling" />
 
         <ToggleButton
             android:id="@+id/exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Exercise" />
+            android:text="Exercise"
+            android:textOff="Exercise" />
 
         <ToggleButton
             android:id="@+id/movies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Movies" />
+            android:text="Movies"
+            android:textOff="Movies"
+            android:textOn="Movies" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,21 +60,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dancing" />
+            android:text="Dancing"
+            android:textOff="Dancing"
+            android:textOn="Dancing" />
 
         <ToggleButton
             android:id="@+id/cooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cooking" />
+            android:text="Cooking"
+            android:textOff="Cooking"
+            android:textOn="Cooking" />
 
         <ToggleButton
             android:id="@+id/outdoors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Outdoors" />
+            android:text="Outdoors"
+            android:textOff="Outdoors"
+            android:textOn="Outdoors" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,21 +93,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Politics" />
+            android:text="Politics"
+            android:textOff="Politics"
+            android:textOn="Politics" />
 
         <ToggleButton
             android:id="@+id/pets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pets" />
+            android:text="Pets"
+            android:textOff="Pets"
+            android:textOn="Pets" />
 
         <ToggleButton
             android:id="@+id/photography"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Photography" />
+            android:text="Photography"
+            android:textOff="Photography"
+            android:textOn="Photography" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,21 +126,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sports" />
+            android:text="Sports"
+            android:textOff="Sport"
+            android:textOn="Sport" />
 
         <ToggleButton
             android:id="@+id/music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Music" />
+            android:text="Music"
+            android:textOff="Music"
+            android:textOn="Music" />
 
         <ToggleButton
             android:id="@+id/videogames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Video Games" />
+            android:text="Video Games"
+            android:textOff="Video Games"
+            android:textOn="Video Games" />
     </LinearLayout>
 
     <LinearLayout
@@ -136,21 +159,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Karaoke" />
+            android:text="Karaoke"
+            android:textOff="Karaoke"
+            android:textOn="Karaoke"
+            android:textSize="14sp" />
 
         <ToggleButton
             android:id="@+id/art"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Art" />
+            android:text="Art"
+            android:textOff="Art"
+            android:textOn="Art" />
 
         <ToggleButton
             android:id="@+id/reading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Reading" />
+            android:text="Reading"
+            android:textOff="Reading"
+            android:textOn="Reading" />
     </LinearLayout>
 
     <LinearLayout
@@ -163,21 +193,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Writing" />
+            android:text="Writing"
+            android:textOff="Writing"
+            android:textOn="Writing" />
 
         <ToggleButton
             android:id="@+id/fashion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fashion" />
+            android:text="Fashion"
+            android:textOff="Fashion"
+            android:textOn="Fashion" />
 
         <ToggleButton
             android:id="@+id/fishing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fishing" />
+            android:text="Fishing"
+            android:textOff="Fishing"
+            android:textOn="Fishing" />
     </LinearLayout>
 
     <LinearLayout
@@ -190,21 +226,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Shopping" />
+            android:text="Shopping"
+            android:textOff="Shopping"
+            android:textOn="Shopping" />
 
         <ToggleButton
             android:id="@+id/socialmedia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Social Media" />
+            android:text="Social Media"
+            android:textOff="Social Media"
+            android:textOn="Social Media" />
 
         <ToggleButton
             android:id="@+id/anime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Anime" />
+            android:text="Anime"
+            android:textOff="Anime"
+            android:textOn="Anime" />
     </LinearLayout>
 
     <LinearLayout
@@ -217,21 +259,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gardening" />
+            android:text="Gardening"
+            android:textOff="Gardening"
+            android:textOn="Gardening" />
 
         <ToggleButton
             android:id="@+id/drinking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Drinking" />
+            android:text="Drinking"
+            android:textOff="Drinking"
+            android:textOn="Drinking" />
 
         <ToggleButton
             android:id="@+id/astrology"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Astrology" />
+            android:text="Astrology"
+            android:textOff="Astrology"
+            android:textOn="Astrology" />
     </LinearLayout>
 
     <LinearLayout
@@ -244,21 +292,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Drawing" />
+            android:text="Drawing"
+            android:textOff="Drawing"
+            android:textOn="Drawing" />
 
         <ToggleButton
             android:id="@+id/boardgames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Board Games" />
+            android:text="Board Games"
+            android:textOff="Board Games"
+            android:textOn="Board Games" />
 
         <ToggleButton
             android:id="@+id/shows"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Shows"/>
+            android:text="Shows"
+            android:textOff="Shows"
+            android:textOn="Shows" />
     </LinearLayout>
 
     <Button
