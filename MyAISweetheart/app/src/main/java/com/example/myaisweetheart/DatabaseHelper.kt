@@ -8,10 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper
 
 
 class DatabaseHelper(context: Context?) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
 
-    private val CREATE_TABLE =
-        "CREATE TABLE messages (id INTEGER PRIMARY KEY AUTOINCREMENT, msg TEXT, sender BOOLEAN)"
+    private val CREATE_TABLE = "CREATE TABLE messages (id INTEGER PRIMARY KEY AUTOINCREMENT, msg TEXT, sender BOOLEAN)"
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE);
@@ -48,7 +47,6 @@ class DatabaseHelper(context: Context?) :
         val query = "SELECT * FROM messages ORDER BY id DESC LIMIT 2"
         return db.rawQuery(query, null)
     }
-
 
     companion object {
         private const val DATABASE_NAME = "msgdb.db"

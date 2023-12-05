@@ -1,6 +1,7 @@
 package com.example.myaisweetheart
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,10 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 class SettingsActivity : AppCompatActivity() {
 
     // Initialize variable
-    lateinit var styleSwitch: Switch
-    lateinit var backBtn: ImageButton
-    lateinit var clearBtn: Button
-    lateinit var Btn: Button
+    private lateinit var styleSwitch: Switch
+    private lateinit var backBtn: ImageButton
+    private lateinit var user: Button
+    private lateinit var gf: Button
+    private lateinit var personality: Button
+    private lateinit var hobbies: Button
+    private lateinit var clearBtn: Button
+    private lateinit var Btn: Button
 
     val dbHelper = DatabaseHelper(this)
 
@@ -24,6 +29,10 @@ class SettingsActivity : AppCompatActivity() {
 
         styleSwitch = findViewById(R.id.message_style_switch)
         backBtn = findViewById(R.id.back_btn)
+        user = findViewById(R.id.changeUserName_btn)
+        gf = findViewById(R.id.changeGfName_btn)
+        personality = findViewById(R.id.changePersonality_btn)
+        hobbies = findViewById(R.id.changeHobbies_btn)
         clearBtn = findViewById(R.id.clear_btn)
         Btn = findViewById(R.id.button5)
 
@@ -49,6 +58,10 @@ class SettingsActivity : AppCompatActivity() {
 
         clearBtn.setOnClickListener(){
             dbHelper.deleteData()
+        }
+
+        user.setOnClickListener{
+
         }
 
         backBtn.setOnClickListener {

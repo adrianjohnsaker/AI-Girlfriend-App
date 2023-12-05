@@ -18,7 +18,7 @@ class Dispatcher : AppCompatActivity() {
 
         // Get the last viewed activity class name from SharedPreferences
         val lastActivityClassName =
-            sharedPreferences.getString("lastActivity", TextActivity::class.java.name)
+            sharedPreferences.getString("lastActivity", UsernameActivity::class.java.name)
 
         // Launch the last viewed activity
         startActivity(Intent(this, Class.forName(lastActivityClassName)))

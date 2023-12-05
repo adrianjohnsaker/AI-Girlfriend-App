@@ -38,7 +38,7 @@ object AIManager {
         jsonObject?.put("temperature", 0.7)
         jsonObject?.put("max_tokens", 1000)
         jsonObject?.put("top_p", 0.7)
-        jsonObject?.put("frequency_penalty", 0.0)
+        jsonObject?.put("frequency_penalty", 1.5)
         jsonObject?.put("presence_penalty", 0.0)
 
         // on below line making json object request.
@@ -49,7 +49,7 @@ object AIManager {
                 Response.Listener { response ->
                     // on below line getting response message and setting it to text view.
                     val responseMsg: String =
-                        response.getJSONArray("choices").getJSONObject(0).getString("text")
+                        response.getJSONArray("choices").getJSONObject(0).getString("text").replaceFirst(Regex("^[\\n?!,.].*"), "")
                     onResponse(responseMsg)
                 },
                 // adding on error listener
@@ -62,7 +62,7 @@ object AIManager {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer ASK BRANDON FOR API KEY"
+                        "Bearer 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"
                     return params;
                 }
             }
@@ -106,7 +106,12 @@ object AIManager {
     }
 
     fun setProfile(dbuser: String, dbgf: String, dbshy: Int, dbpessimistic: Int, dbordinary: Int, dbhobbies: String) {
-
+        user = dbuser
+        gf = dbgf
+        shy = dbshy
+        pessimistic = dbpessimistic
+        ordinary = dbordinary
+        hobbies = dbhobbies
     }
 
     fun getUserName(): String {
