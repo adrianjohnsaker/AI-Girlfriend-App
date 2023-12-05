@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
-
+    android:background="@color/black"
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/hobbiesDescTV"
         android:layout_width="match_parent"
         android:layout_height="11mm"
+        android:fontFamily="@font/qsmed"
         android:text="Let your girlfriend know what your interests are."
         android:textAlignment="center"
-        android:fontFamily="@font/qsmed"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/hobbiesDescTV1"
         android:layout_width="match_parent"
         android:layout_height="7mm"
+        android:fontFamily="@font/qsmed"
         android:text="Select up to 5 things you like."
         android:textAlignment="center"
-        android:fontFamily="@font/qsmed"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="italic"
-        android:textColor="@color/white"/>/>
+        android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="62.5mm"
         android:layout_height="9mm"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <ToggleButton
             android:id="@+id/traveling"
@@ -43,9 +44,9 @@
             android:text="Traveling"
             android:textOff="Traveling"
             android:textOn="Traveling"
-            android:thumbTint="@color/black"
-            android:trackTint="@color/white"
-            android:checked="true"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
+
 
         <ToggleButton
             android:id="@+id/exercise"
@@ -53,7 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Exercise"
-            android:textOff="Exercise" />
+            android:textOff="Exercise"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/movies"
@@ -62,7 +65,9 @@
             android:layout_weight="1"
             android:text="Movies"
             android:textOff="Movies"
-            android:textOn="Movies" />
+            android:textOn="Movies"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +82,9 @@
             android:layout_weight="1"
             android:text="Dancing"
             android:textOff="Dancing"
-            android:textOn="Dancing" />
+            android:textOn="Dancing"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/cooking"
@@ -86,7 +93,9 @@
             android:layout_weight="1"
             android:text="Cooking"
             android:textOff="Cooking"
-            android:textOn="Cooking" />
+            android:textOn="Cooking"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/outdoors"
@@ -95,7 +104,9 @@
             android:layout_weight="1"
             android:text="Outdoors"
             android:textOff="Outdoors"
-            android:textOn="Outdoors" />
+            android:textOn="Outdoors"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -110,7 +121,9 @@
             android:layout_weight="1"
             android:text="Politics"
             android:textOff="Politics"
-            android:textOn="Politics" />
+            android:textOn="Politics"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/pets"
@@ -119,7 +132,9 @@
             android:layout_weight="1"
             android:text="Pets"
             android:textOff="Pets"
-            android:textOn="Pets" />
+            android:textOn="Pets"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/photography"
@@ -128,7 +143,9 @@
             android:layout_weight="1"
             android:text="Photography"
             android:textOff="Photography"
-            android:textOn="Photography" />
+            android:textOn="Photography"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -143,7 +160,9 @@
             android:layout_weight="1"
             android:text="Sports"
             android:textOff="Sport"
-            android:textOn="Sport" />
+            android:textOn="Sport"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/music"
@@ -152,7 +171,9 @@
             android:layout_weight="1"
             android:text="Music"
             android:textOff="Music"
-            android:textOn="Music" />
+            android:textOn="Music"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/videogames"
@@ -161,7 +182,9 @@
             android:layout_weight="1"
             android:text="Video Games"
             android:textOff="Video Games"
-            android:textOn="Video Games" />
+            android:textOn="Video Games"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -177,7 +200,9 @@
             android:text="Karaoke"
             android:textOff="Karaoke"
             android:textOn="Karaoke"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/art"
@@ -186,7 +211,9 @@
             android:layout_weight="1"
             android:text="Art"
             android:textOff="Art"
-            android:textOn="Art" />
+            android:textOn="Art"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/reading"
@@ -195,7 +222,9 @@
             android:layout_weight="1"
             android:text="Reading"
             android:textOff="Reading"
-            android:textOn="Reading" />
+            android:textOn="Reading"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -210,7 +239,9 @@
             android:layout_weight="1"
             android:text="Writing"
             android:textOff="Writing"
-            android:textOn="Writing" />
+            android:textOn="Writing"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/fashion"
@@ -219,7 +250,9 @@
             android:layout_weight="1"
             android:text="Fashion"
             android:textOff="Fashion"
-            android:textOn="Fashion" />
+            android:textOn="Fashion"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/fishing"
@@ -228,7 +261,9 @@
             android:layout_weight="1"
             android:text="Fishing"
             android:textOff="Fishing"
-            android:textOn="Fishing" />
+            android:textOn="Fishing"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -243,7 +278,9 @@
             android:layout_weight="1"
             android:text="Shopping"
             android:textOff="Shopping"
-            android:textOn="Shopping" />
+            android:textOn="Shopping"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/socialmedia"
@@ -252,7 +289,9 @@
             android:layout_weight="1"
             android:text="Social Media"
             android:textOff="Social Media"
-            android:textOn="Social Media" />
+            android:textOn="Social Media"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/anime"
@@ -261,7 +300,9 @@
             android:layout_weight="1"
             android:text="Anime"
             android:textOff="Anime"
-            android:textOn="Anime" />
+            android:textOn="Anime"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -276,7 +317,9 @@
             android:layout_weight="1"
             android:text="Gardening"
             android:textOff="Gardening"
-            android:textOn="Gardening" />
+            android:textOn="Gardening"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/drinking"
@@ -285,7 +328,9 @@
             android:layout_weight="1"
             android:text="Drinking"
             android:textOff="Drinking"
-            android:textOn="Drinking" />
+            android:textOn="Drinking"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/astrology"
@@ -294,12 +339,14 @@
             android:layout_weight="1"
             android:text="Astrology"
             android:textOff="Astrology"
-            android:textOn="Astrology" />
+            android:textOn="Astrology"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="62.5mm"
-        android:layout_height="12mm"
+        android:layout_height="9mm"
         android:orientation="horizontal">
 
         <ToggleButton
@@ -309,7 +356,9 @@
             android:layout_weight="1"
             android:text="Drawing"
             android:textOff="Drawing"
-            android:textOn="Drawing" />
+            android:textOn="Drawing"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/boardgames"
@@ -318,7 +367,9 @@
             android:layout_weight="1"
             android:text="Board Games"
             android:textOff="Board Games"
-            android:textOn="Board Games" />
+            android:textOn="Board Games"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
 
         <ToggleButton
             android:id="@+id/shows"
@@ -327,16 +378,18 @@
             android:layout_weight="1"
             android:text="Shows"
             android:textOff="Shows"
-            android:textOn="Shows" />
+            android:textOn="Shows"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_toggle"/>
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/toChat_btn"
-        android:src="@drawable/pbutton"
-        android:scaleType="fitCenter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="8mm"
         android:background="@color/black"
-        android:rotationY="180"/>
+        android:rotationY="180"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pbutton" />
 
 </LinearLayout>
