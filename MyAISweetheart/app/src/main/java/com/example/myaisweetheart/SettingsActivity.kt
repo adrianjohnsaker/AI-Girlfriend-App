@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,8 +12,9 @@ class SettingsActivity : AppCompatActivity() {
 
     // Initialize variable
     lateinit var styleSwitch: Switch
-    lateinit var backBtn: Button
+    lateinit var backBtn: ImageButton
     lateinit var clearBtn: Button
+    lateinit var Btn: Button
 
     val dbHelper = DatabaseHelper(this)
 
@@ -23,6 +25,8 @@ class SettingsActivity : AppCompatActivity() {
         styleSwitch = findViewById(R.id.message_style_switch)
         backBtn = findViewById(R.id.back_btn)
         clearBtn = findViewById(R.id.clear_btn)
+        Btn = findViewById(R.id.button5)
+
 
         val sharedPreferences = getSharedPreferences("save", MODE_PRIVATE)
         styleSwitch.setChecked(sharedPreferences.getBoolean("value", true))
@@ -52,6 +56,11 @@ class SettingsActivity : AppCompatActivity() {
             if(styleSwitch.isChecked)
                 backIntent = Intent(this, TextActivity::class.java)
             startActivity(backIntent)
+        }
+        Btn.setOnClickListener {
+
+            var Intent = Intent(this, UsernameActivity::class.java)
+            startActivity(Intent)
         }
     }
 }

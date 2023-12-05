@@ -6,23 +6,21 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.security.AccessController.getContext
 
 class TextActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: MessageAdapter
     private lateinit var mEditText: EditText
-    private lateinit var mButton: Button
+    private lateinit var mButton: ImageButton
 
     val dbHelper = DatabaseHelper(this)
 
     private var mMessages: MutableList<Message> = ArrayList()
-
-    private val template: String  = """Roleplay as my girlfriend. Your name is Yui. You're 21 years old. You are a college student. 
-        You love me. You're open to any conversation. Respond with care and concern. You're flirty. 
-        Always keep your responses within 70 words.""".trimMargin()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +34,6 @@ class TextActivity : AppCompatActivity() {
 
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.adapter = mAdapter
-
 
         val cursor: Cursor? = dbHelper.readData()
 
@@ -61,9 +58,7 @@ class TextActivity : AppCompatActivity() {
             cursor.close()
         }
 
-        //getResponse(template)
-
-        val settingsBtn: Button = findViewById(R.id.settings_btn)
+        val settingsBtn: ImageButton = findViewById(R.id.settings_btn)
         settingsBtn.setOnClickListener {
             val settingsIntent = Intent(this, SettingsActivity::class.java)
             startActivity(settingsIntent)
@@ -73,20 +68,25 @@ class TextActivity : AppCompatActivity() {
             val text = mEditText.text.toString()
             mMessages.add(Message(text, true))
             mAdapter.notifyItemInserted(mMessages.size - 1)
+            dbHelper.insertData(mEditText.text.toString(), true)
             getResponse(mEditText.text.toString())
             mEditText.text.clear()
         }
     }
 
-    private var responseCounter = 0
-
     private fun getResponse(query: String) {
-        dbHelper.insertData(query, true)
-        mMessages.add(Message("Response$responseCounter", false))
-        dbHelper.insertData(mMessages.last().getText(), false)
-        responseCounter++
-
-        mAdapter.notifyItemInserted(mMessages.size - 1)
+        AIManager.getResponse(applicationContext, query,
+            onResponse = { responseMsg ->
+                // Handle response for text messaging style
+                // For example, update your message list and notify the adapter
+                mMessages.add(Message(responseMsg, false))
+                dbHelper.insertData(mMessages.last().getText(), false)
+                mAdapter.notifyDataSetChanged()
+            },
+            onError = { error ->
+                Log.e("TAGAPI", "Error is: $error")
+            }
+        )
     }
 
 

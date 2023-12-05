@@ -6,21 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.launch
-import java.util.Date
-import java.util.UUID
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,25 +20,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTV: TextView
     private lateinit var queryEdt: TextInputEditText
 
-    val dbHelper = DatabaseHelper(this)
-
-    val template: String  = """Roleplay as my girlfriend. Your name is Yui. You're a young adult. You are a college student. 
-        You love me. You're open to any conversation. Respond with care and concern. You're flirty.""".trimMargin()
+    private val dbHelper = DatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //button click leads to notification page
-        val nextButton: Button = findViewById(R.id.notif_button)
-        nextButton.setOnClickListener {
-            // Start ContentActivity when next_button is clicked
-            val intent = Intent(this@MainActivity, NotifActivity::class.java)
-            startActivity(intent)
-        }
-
-        
         // initializing variables on below line.
         responseTV = findViewById(R.id.idTVResponse)
         questionTV = findViewById(R.id.idTVQuestion)
@@ -87,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         queryEdt.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 // setting response tv on below line.
@@ -104,25 +81,27 @@ class MainActivity : AppCompatActivity() {
             false
         })
 
-        val settingsBtn: Button = findViewById(R.id.settings_btn)
+        val settingsBtn: ImageButton = findViewById(R.id.settings_btn)
         settingsBtn.setOnClickListener {
             val settingsIntent = Intent(this, SettingsActivity::class.java)
             startActivity(settingsIntent)
         }
     }
 
-    private var responseCounter = 0
-
     private fun getResponse(query: String) {
-        dbHelper.insertData(query, true)
-        if (query != template)
-            questionTV.text = query
+        questionTV.text = query
         queryEdt.setText("")
 
-        //AI response placeholder
-        responseTV.text = "Response$responseCounter"
-        dbHelper.insertData(responseTV.text.toString(), false)
-        responseCounter++
+        AIManager.getResponse(applicationContext, query,
+            onResponse = { responseMsg ->
+                questionTV.text = query
+                responseTV.text = responseMsg
+                dbHelper.insertData(query, true)
+                dbHelper.insertData(responseMsg, false)
+            }
+        ) { error ->
+            Log.e("TAGAPI", "Error is: $error")
+        }
     }
 
     override fun onPause() {
