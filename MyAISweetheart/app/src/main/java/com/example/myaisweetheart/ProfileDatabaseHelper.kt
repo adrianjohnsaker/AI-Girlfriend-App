@@ -22,7 +22,7 @@ class ProfileDatabaseHelper(context: Context?) :
 
     fun readData(): Cursor? {
         val db = this.readableDatabase
-        val query = "SELECT * FROM messages"
+        val query = "SELECT * FROM profile"
         return db.rawQuery(query, null)
     }
 

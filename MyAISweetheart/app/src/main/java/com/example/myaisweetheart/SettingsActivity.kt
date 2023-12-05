@@ -14,11 +14,11 @@ class SettingsActivity : AppCompatActivity() {
     // Initialize variable
     private lateinit var styleSwitch: Switch
     private lateinit var backBtn: ImageButton
-    private lateinit var user: Button
-    private lateinit var gf: Button
-    private lateinit var personality: Button
-    private lateinit var hobbies: Button
-    private lateinit var clearBtn: Button
+    private lateinit var user: ImageButton
+    private lateinit var gf: ImageButton
+    private lateinit var personality: ImageButton
+    private lateinit var hobbies: ImageButton
+    private lateinit var clearBtn: ImageButton
     private lateinit var Btn: Button
 
     val dbHelper = DatabaseHelper(this)
