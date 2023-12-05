@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <TextView
         android:id="@+id/greetingTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
+        android:fontFamily="@font/qsmed"
         android:text="Hi! It's nice to meet you. What should I call you by?"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,18 +24,24 @@
         android:id="@+id/name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/qsmed"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:hint="Enter your name"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/toGfName_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greetingTV"
         app:layout_constraintVertical_bias="0.933" />
 
-    <Button
+    <ImageButton
         android:id="@+id/toGfName_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="180dp"
-        android:text="Next"
+        android:background="@drawable/pbutton"
+        android:rotationY="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
