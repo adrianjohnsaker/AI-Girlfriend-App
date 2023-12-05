@@ -4,18 +4,21 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/heart_anim"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/heart_anim"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAISweetheart"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Dispatcher"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +26,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity android:name=".NotifActivity">
+
+        <activity
+            android:name=".MainActivity">
+        </activity>
+
+        <activity
+            android:name=".SettingsActivity">
+        </activity>
+
+        <activity
+            android:name=".TextActivity">
+        </activity>
+
+        <activity
+            android:name=".UsernameActivity">
+        </activity>
+
+        <activity
+            android:name=".GfNameActivity">
+        </activity>
+
+        <activity
+            android:name=".PersonalityActivity">
+        </activity>
+
+        <activity
+            android:name=".HobbiesActivity">
         </activity>
 
     </application>
