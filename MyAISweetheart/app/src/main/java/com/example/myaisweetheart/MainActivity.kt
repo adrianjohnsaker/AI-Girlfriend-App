@@ -3,15 +3,16 @@ package com.example.myaisweetheart
 import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var queryEdt: TextInputEditText
 
     private val dbHelper = DatabaseHelper(this)
+    private val prodbHelper = ProfileDatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         responseTV = findViewById(R.id.idTVResponse)
         questionTV = findViewById(R.id.idTVQuestion)
         queryEdt = findViewById(R.id.idEdtQuery)
-        // adding editor action listener for edit text on below line.
+        responseTV.movementMethod = ScrollingMovementMethod()
 
         //getResponse(template)
         val cursor: Cursor? = dbHelper.getLastTwoEntries()
@@ -64,6 +66,42 @@ class MainActivity : AppCompatActivity() {
                 } while (it.moveToNext())
             }
         }
+
+        val procursor: Cursor? = prodbHelper.readData()
+
+        if (procursor != null && procursor.moveToFirst()) {
+            // Check if the cursor has the expected columns
+            val userIndex = procursor.getColumnIndex("user")
+            val gfIndex = procursor.getColumnIndex("gf")
+            val shyIndex = procursor.getColumnIndex("shy")
+            val pessimisticIndex = procursor.getColumnIndex("pessimistic")
+            val ordinaryIndex = procursor.getColumnIndex("ordinary")
+            val hobbiesIndex = procursor.getColumnIndex("hobbies")
+
+            if (userIndex != -1 && gfIndex != -1 && shyIndex != -1 &&
+                pessimisticIndex != -1 && ordinaryIndex != -1 && hobbiesIndex != -1
+            ) {
+                // Retrieve values only if the columns exist in the cursor
+                val user = procursor.getString(userIndex)
+                val gf = procursor.getString(gfIndex)
+                val shy = procursor.getInt(shyIndex)
+                val pessimistic = procursor.getInt(pessimisticIndex)
+                val ordinary = procursor.getInt(ordinaryIndex)
+                val hobbies = procursor.getString(hobbiesIndex)
+                AIManager.setProfile(user, gf, shy, pessimistic, ordinary, hobbies)
+            } else {
+                // Handle the case where one or more columns are not present in the cursor
+                // Log an error or display a message
+                Log.e("Error", "One or more columns not present in the cursor.")
+            }
+        } else {
+            // Handle the case where the cursor is empty
+            Log.e("Error", "Cursor is empty.")
+        }
+
+// Close the cursor to release resources
+        procursor?.close()
+
 
         queryEdt.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {

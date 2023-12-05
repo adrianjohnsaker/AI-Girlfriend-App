@@ -19,6 +19,7 @@ class TextActivity : AppCompatActivity() {
     private lateinit var mButton: ImageButton
 
     val dbHelper = DatabaseHelper(this)
+    val prodbHelper = ProfileDatabaseHelper(this)
 
     private var mMessages: MutableList<Message> = ArrayList()
 
@@ -56,6 +57,38 @@ class TextActivity : AppCompatActivity() {
             }
 
             cursor.close()
+        }
+
+        val procursor: Cursor? = prodbHelper.readData()
+
+        if (procursor != null && procursor.moveToFirst()) {
+            // Check if the cursor has the expected columns
+            val userIndex = procursor.getColumnIndex("user")
+            val gfIndex = procursor.getColumnIndex("gf")
+            val shyIndex = procursor.getColumnIndex("shy")
+            val pessimisticIndex = procursor.getColumnIndex("pessimistic")
+            val ordinaryIndex = procursor.getColumnIndex("ordinary")
+            val hobbiesIndex = procursor.getColumnIndex("hobbies")
+
+            if (userIndex != -1 && gfIndex != -1 && shyIndex != -1 &&
+                pessimisticIndex != -1 && ordinaryIndex != -1 && hobbiesIndex != -1
+            ) {
+                // Retrieve values only if the columns exist in the cursor
+                val user = procursor.getString(userIndex)
+                val gf = procursor.getString(gfIndex)
+                val shy = procursor.getInt(shyIndex)
+                val pessimistic = procursor.getInt(pessimisticIndex)
+                val ordinary = procursor.getInt(ordinaryIndex)
+                val hobbies = procursor.getString(hobbiesIndex)
+                AIManager.setProfile(user, gf, shy, pessimistic, ordinary, hobbies)
+            } else {
+                // Handle the case where one or more columns are not present in the cursor
+                // Log an error or display a message
+                Log.e("Error", "One or more columns not present in the cursor.")
+            }
+        } else {
+            // Handle the case where the cursor is empty
+            Log.e("Error", "Cursor is empty.")
         }
 
         val settingsBtn: ImageButton = findViewById(R.id.settings_btn)

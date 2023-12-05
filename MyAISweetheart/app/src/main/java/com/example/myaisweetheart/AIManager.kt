@@ -39,7 +39,7 @@ object AIManager {
         jsonObject?.put("max_tokens", 1000)
         jsonObject?.put("top_p", 0.7)
         jsonObject?.put("frequency_penalty", 1.5)
-        jsonObject?.put("presence_penalty", 0.0)
+        jsonObject?.put("presence_penalty", 1.0)
 
         // on below line making json object request.
         val postRequest: JsonObjectRequest =
@@ -49,7 +49,7 @@ object AIManager {
                 Response.Listener { response ->
                     // on below line getting response message and setting it to text view.
                     val responseMsg: String =
-                        response.getJSONArray("choices").getJSONObject(0).getString("text").replaceFirst(Regex("^[\\n?!,.].*"), "")
+                        response.getJSONArray("choices").getJSONObject(0).getString("text")
                     onResponse(responseMsg)
                 },
                 // adding on error listener
@@ -62,7 +62,7 @@ object AIManager {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer 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"
+                        "Bearer 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"
                     return params;
                 }
             }
@@ -161,11 +161,12 @@ object AIManager {
 
     private fun buildPrompt(chatHistory: String, currentQuery: String): String {
         val instructions = "Roleplay as my girlfriend. Your name is $gf. My name is $user. You're 21 years old. You are a college student. \n" +
-                "You love me. You're open to any conversation. For personality traits: " +
+                "You love me. You're open to any conversation. For personality traits (Don't mention these in conversation): " +
                 "On a scale of 0 to 10, 0 being very shy and 10 being very flirty, you're $shy.\n" +
                 "Then on a scale of 0 to 10, 0 being very pessimistic and 10 being very optimistic, you're $pessimistic.\n" +
                 "Then on a scale of 0 to 10, 0 being very ordinary and 10 being very mysterious, you're $ordinary.\n" +
-                "Here are my interests and hobbies: $hobbies"
+                "Here are my interests and hobbies: $hobbies.\n" +
+                "Try to keep your responses within 50 words."
         return "$instructions \n\n$chatHistory $currentQuery"
     }
 }
