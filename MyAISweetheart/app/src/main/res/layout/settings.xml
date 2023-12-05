@@ -17,27 +17,98 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Switch
-            android:id="@+id/message_style_switch"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:fontFamily="@font/qsmed"
-            android:paddingLeft="15dp"
-            android:paddingRight="10dp"
-            android:text="Message Style: Dating Sim / Text Message"
-            android:textColor="#FFFFFF" />
+            android:layout_height="81dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/clear_btn"
+            <Switch
+                android:id="@+id/message_style_switch"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:fontFamily="@font/qsmed"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:text="Message Style: Dating Sim / Text Message"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="clear" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button5"
+            <Button
+                android:id="@+id/changeUserName_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change user name" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/changeGfName_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change gf name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/changePersonality_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change personality" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/changeHobbies_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change hobbies" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/clear_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="clear" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <ImageButton
