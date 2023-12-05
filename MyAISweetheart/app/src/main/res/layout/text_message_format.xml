@@ -34,7 +34,7 @@
             android:clickable="true"
             android:onClick="openSettings"
             android:scaleType="fitCenter"
-            android:src="@drawable/gearSettings"
+            android:src="@drawable/gearsettings"
             android:visibility="visible"
             tools:visibility="visible" />
 
@@ -63,7 +63,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/sendButton"
+                android:src="@drawable/sendbutton"
                 android:scaleType="fitCenter" />
 
         </LinearLayout>
