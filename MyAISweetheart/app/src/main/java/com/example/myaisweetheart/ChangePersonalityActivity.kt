@@ -2,18 +2,16 @@ package com.example.myaisweetheart
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.SeekBar
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
+import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
 
-class PersonalityActivity : AppCompatActivity(){
-
+class ChangePersonalityActivity : AppCompatActivity() {
     private lateinit var shy: SeekBar
     private lateinit var pessimistic: SeekBar
     private lateinit var ordinary: SeekBar
     private lateinit var nextBtn: ImageButton
+    private val dbHelper = ProfileDatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +27,7 @@ class PersonalityActivity : AppCompatActivity(){
         seekBarListener(ordinary, 69)
 
         nextBtn.setOnClickListener {
-            val nextIntent = Intent(this, HobbiesActivity::class.java)
+            val nextIntent = Intent(this, SettingsActivity::class.java)
             startActivity(nextIntent)
         }
     }
@@ -45,6 +43,18 @@ class PersonalityActivity : AppCompatActivity(){
             override fun onStopTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is stopped
                 AIManager.setPersonality(personality.progress, trait)
+
+                when (trait) {
+                    0 -> {
+                        dbHelper.updateShy(personality.progress)
+                    }
+                    1 -> {
+                        dbHelper.updatePessimistic(personality.progress)
+                    }
+                    else -> {
+                        dbHelper.updateOrdinary(personality.progress)
+                    }
+                }
             }
         })
     }

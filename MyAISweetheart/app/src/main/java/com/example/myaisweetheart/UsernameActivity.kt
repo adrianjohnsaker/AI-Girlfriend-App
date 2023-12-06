@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.Toast
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myaisweetheart.AIManager.getResponse
 import com.google.android.material.textfield.TextInputEditText
 
 class UsernameActivity : AppCompatActivity(){
 
-    private lateinit var nextBtn: Button
+    private lateinit var nextBtn: ImageButton
     private lateinit var username: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {

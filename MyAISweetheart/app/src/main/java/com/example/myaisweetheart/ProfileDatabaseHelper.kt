@@ -31,6 +31,48 @@ class ProfileDatabaseHelper(context: Context?) :
         db.delete("profile", null, null)
     }
 
+    fun updateUser(user: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "user", null)
+        contentValues.put("user", user)
+    }
+
+    fun updateGf(gf: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "gf", null)
+        contentValues.put("gf", gf)
+    }
+
+    fun updateShy(shy: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "shy", null)
+        contentValues.put("shy", shy)
+    }
+
+    fun updatePessimistic(pessimistic: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "pessimistic", null)
+        contentValues.put("pessimistic", pessimistic)
+    }
+
+    fun updateOrdinary(ordinary: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "ordinary", null)
+        contentValues.put("ordinary", ordinary)
+    }
+
+    fun updateHobbies(hobbies: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        db.delete("profile", "hobbies", null)
+        contentValues.put("hobbies", hobbies)
+    }
+
     fun updateProfileData(user: String, gf: String, shy: Int, pessimistic: Int, ordinary: Int, hobbies: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()

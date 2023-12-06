@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SettingsActivity : AppCompatActivity() {
@@ -34,11 +35,10 @@ class SettingsActivity : AppCompatActivity() {
         personality = findViewById(R.id.changePersonality_btn)
         hobbies = findViewById(R.id.changeHobbies_btn)
         clearBtn = findViewById(R.id.clear_btn)
-        Btn = findViewById(R.id.button5)
 
 
         val sharedPreferences = getSharedPreferences("save", MODE_PRIVATE)
-        styleSwitch.setChecked(sharedPreferences.getBoolean("value", true))
+        styleSwitch.setChecked(sharedPreferences.getBoolean("value", false))
 
         styleSwitch.setOnClickListener(View.OnClickListener {
             if (styleSwitch.isChecked()) {
@@ -58,10 +58,27 @@ class SettingsActivity : AppCompatActivity() {
 
         clearBtn.setOnClickListener(){
             dbHelper.deleteData()
+            Toast.makeText(this, "Cleared Chat", Toast.LENGTH_SHORT).show()
         }
 
-        user.setOnClickListener{
+        user.setOnClickListener(){
+            var Intent = Intent(this, ChangeUserActivity::class.java)
+            startActivity(Intent)
+        }
 
+        gf.setOnClickListener(){
+            var Intent = Intent(this, ChangeGfActivity::class.java)
+            startActivity(Intent)
+        }
+
+        personality.setOnClickListener(){
+            var Intent = Intent(this, ChangePersonalityActivity::class.java)
+            startActivity(Intent)
+        }
+
+        hobbies.setOnClickListener(){
+            var Intent = Intent(this, ChangeHobbiesActivity::class.java)
+            startActivity(Intent)
         }
 
         backBtn.setOnClickListener {
@@ -69,11 +86,6 @@ class SettingsActivity : AppCompatActivity() {
             if(styleSwitch.isChecked)
                 backIntent = Intent(this, TextActivity::class.java)
             startActivity(backIntent)
-        }
-        Btn.setOnClickListener {
-
-            var Intent = Intent(this, UsernameActivity::class.java)
-            startActivity(Intent)
         }
     }
 }

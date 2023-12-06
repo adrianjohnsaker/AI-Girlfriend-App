@@ -2,22 +2,15 @@ package com.example.myaisweetheart
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 
-class HobbiesActivity : AppCompatActivity(){
-
+class ChangeHobbiesActivity : AppCompatActivity(){
     private lateinit var nextBtn: ImageButton
     private var toggledCount: Int = 0
     private var hobbies = ""
     private val dbHelper = ProfileDatabaseHelper(this)
-    private var user = ""
-    private var gf = ""
-    private var shy: Int = 0
-    private var pessimistic: Int = 0
-    private var ordinary: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,14 +61,9 @@ class HobbiesActivity : AppCompatActivity(){
                 }
             }
             AIManager.setHobbies(hobbies)
-            user = AIManager.getUserName()
-            gf = AIManager.getGfName()
-            shy = AIManager.getShy()
-            pessimistic = AIManager.getPessimistic()
-            ordinary = AIManager.getOrdinary()
-            dbHelper.updateProfileData(user, gf, shy, pessimistic, ordinary, hobbies)
+            dbHelper.updateHobbies(hobbies)
 
-            val nextIntent = Intent(this, MainActivity::class.java)
+            val nextIntent = Intent(this, SettingsActivity::class.java)
             startActivity(nextIntent)
         }
     }

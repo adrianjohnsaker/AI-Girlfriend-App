@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         questionTV = findViewById(R.id.idTVQuestion)
         queryEdt = findViewById(R.id.idEdtQuery)
         responseTV.movementMethod = ScrollingMovementMethod()
+        questionTV.movementMethod = ScrollingMovementMethod()
 
         //getResponse(template)
         val cursor: Cursor? = dbHelper.getLastTwoEntries()

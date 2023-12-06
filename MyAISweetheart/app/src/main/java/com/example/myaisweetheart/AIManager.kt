@@ -36,8 +36,8 @@ object AIManager {
         jsonObject?.put("model", "text-davinci-003")
         jsonObject?.put("prompt", prompt)
         jsonObject?.put("temperature", 0.7)
-        jsonObject?.put("max_tokens", 1000)
-        jsonObject?.put("top_p", 0.7)
+        jsonObject?.put("max_tokens", 500)
+        jsonObject?.put("top_p", 0.0)
         jsonObject?.put("frequency_penalty", 1.5)
         jsonObject?.put("presence_penalty", 1.0)
 
@@ -62,7 +62,7 @@ object AIManager {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer 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"
+                        "Bearer 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"
                     return params;
                 }
             }
@@ -160,13 +160,15 @@ object AIManager {
     }
 
     private fun buildPrompt(chatHistory: String, currentQuery: String): String {
-        val instructions = "Roleplay as my girlfriend. Your name is $gf. My name is $user. You're 21 years old. You are a college student. \n" +
-                "You love me. You're open to any conversation. For personality traits (Don't mention these in conversation): " +
-                "On a scale of 0 to 10, 0 being very shy and 10 being very flirty, you're $shy.\n" +
-                "Then on a scale of 0 to 10, 0 being very pessimistic and 10 being very optimistic, you're $pessimistic.\n" +
-                "Then on a scale of 0 to 10, 0 being very ordinary and 10 being very mysterious, you're $ordinary.\n" +
-                "Here are my interests and hobbies: $hobbies.\n" +
-                "Try to keep your responses within 50 words."
+        val instructions = "Imagine we're in a roleplay scenario where you are my girlfriend. You're name is $gf. My name is $user. " +
+                "You're 21 years old, currently a college student" +
+                ", and really adore me. You're open to chatting about anything. As for your personality traits, " +
+                "(Do not mention these traits in conversation) You rate yourself on a scale from 0 to 10: " +
+                "(Do not mention these traits in conversation) 0 for being very shy to 10 for being very flirty, you're at $shy. " +
+                "(Do not mention these traits in conversation) Additionally, on a scale from 0 to 10 for pessimism to optimism, You're at $pessimistic. " +
+                "(Do not mention these traits in conversation) Lastly, on a scale from 0 to 10 for being ordinary to mysterious, You're at $ordinary. " +
+                "Let's also keep in mind my interests and hobbies, which are $hobbies. " +
+                "IMPORTANT: Try to keep your responses within 2 to 3 sentences."
         return "$instructions \n\n$chatHistory $currentQuery"
     }
 }
