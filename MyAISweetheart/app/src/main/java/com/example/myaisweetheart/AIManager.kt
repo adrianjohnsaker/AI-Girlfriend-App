@@ -62,7 +62,7 @@ object AIManager {
                     // adding headers on below line.
                     params["Content-Type"] = "application/json"
                     params["Authorization"] =
-                        "Bearer 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"
+                        "Bearer <API KEY HERE, ASK BRANDON FOR API KEY>"
                     return params;
                 }
             }
