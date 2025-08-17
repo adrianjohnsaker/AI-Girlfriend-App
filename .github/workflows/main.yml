@@ -1,35 +1,32 @@
-name: Build Amelia Shell APK
+name: Build APK
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   build:
-    name: Assemble Debug APK
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-    - name: Set up JDK 17
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
+        java-version: '11'
         distribution: 'temurin'
-        java-version: '17'
 
-    - name: Grant execute permission to Gradle wrapper
+    - name: Make gradlew executable
       run: chmod +x ./gradlew
 
-    - name: Build Debug APK
-      run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
+    - name: Build debug APK
+      run: ./gradlew assembleDebug
 
-    - name: Upload APK artifact
-      uses: actions/upload-artifact@v4
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
       with:
-        name: amelia-shell-apk
+        name: app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
