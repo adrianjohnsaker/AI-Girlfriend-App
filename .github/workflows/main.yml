@@ -1,32 +1,60 @@
-name: Build APK
+name: Build and Upload Artifacts
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Make gradlew executable
-      run: chmod +x ./gradlew
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Build debug APK
-      run: ./gradlew assembleDebug
+      - name: Install backend dependencies
+        run: pip install -r requirements.txt
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build frontend (if applicable)
+        working-directory: ./frontend
+        run: |
+          if [ -f package.json ] && grep -q "\"build\":" package.json; then
+            npm run build
+          else
+            echo "No build script found, skipping build."
+          fi
+
+      - name: Zip backend
+        run: zip -r backend.zip . -x "frontend/*" ".git/*" ".github/*" "backend.zip" "frontend.zip"
+
+      - name: Zip frontend
+        working-directory: ./frontend
+        run: zip -r ../frontend.zip . -x "node_modules/*" ".git/*"
+
+      - name: Upload backend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend
+          path: backend.zip
+
+      - name: Upload frontend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend
+          path: frontend.zip
